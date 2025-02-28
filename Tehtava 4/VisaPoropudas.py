@@ -1,28 +1,28 @@
 import streamlit as st
 import pandas as pd
-import altair as alt
+import plotly.express as px
 
 st.write("Harjoitus 4, Visa Poropudas")
+# This is my first ever Python excersize!
 
-def get_UK_cinema_data() :
-    #BFI_DL_URL = "https://core-cms.bfi.org.uk/media/1761/download/"
-    FILE_NAME = "top-200-films-at-world-box-office-2001-2008.xls"
-    df = pd.read_excel(FILE_NAME)
-    return df.set_index("US DISTRIBUTOR")
 def get_Titanic_data() :
     df = pd.read_excel('Titanic Data.xlsx')
     return df.set_index("PassengerId")
 
 df = get_Titanic_data()
 
+boolean_alias_mapping = {
+      "All" : "",
+      "false" : "0",
+      "True" : "1"
+}
 
 pclass = st.multiselect(
     "Choose Passenger Class", list([1,2,3]), [1, 2, 3])
-st.write("Ei toiminnassa")
 sex = st.multiselect(
         "Choose Sex", list(["male", "female"]), ["female", "male"]
 )
-st.write("Ei toiminnassa")
+survived = st.selectbox("Survived", options=list(boolean_alias_mapping.keys()))
 if not pclass:
         st.error("Please select at least one Passenger Class.")
 if not sex:
@@ -30,25 +30,41 @@ if not sex:
 else:
         
         st.subheader("Titanic Passengers")
-        st.dataframe(df.sort_index())
+        filtered_df = df[df['Sex'].isin(sex)]
+        filtered_df = filtered_df[df['Pclass'].isin(pclass)]
+        if survived != "All":
+              filtered_df = filtered_df.loc[df['Survived'] == int(boolean_alias_mapping[survived])]
+        st.dataframe(filtered_df.sort_index())
 
         st.subheader("Passengers by age")
-        df = df[["Age", "Survived"]]
-        chart_df = df.groupby(["Age"]).sum()
-        chart_df["Age"] = chart_df.index
-        st.bar_chart(chart_df, x="Age", y=["Survived"])
+        df = filtered_df[["Age", "Survived", "Pclass", "Sex"]]
+        df = df.reset_index() # In order to access PassengerId
+        df = df.dropna() ## remove NULL values
+        chart_df = df.groupby("Age").sum()
+        st.bar_chart(df, x="Age", y=["PassengerId"])
 
-        st.subheader("Survivors by Sex")
-        df = get_Titanic_data()
-        df = df[["Sex", "Survived"]]
+        st.subheader("Passengers by Sex")
+        df = filtered_df[["Sex"]]
+        df = df.reset_index()
         chart_df = df.groupby(["Sex"]).sum()
         chart_df["Sex"] = chart_df.index
-        st.bar_chart(chart_df, x="Sex", y=["Survived"])
+        st.bar_chart(chart_df, x="Sex", y=["PassengerId"])
 
-        st.subheader("Survivors by Passenger Class")
-        df = get_Titanic_data()
-        df = df[["Pclass", "Survived"]]
+        st.subheader("Passengers by Passenger Class")
+        df = filtered_df[["Pclass", "Sex"]]
+        df = df.reset_index()
         chart_df = df.groupby(["Pclass"]).sum()
         chart_df["Pclass"] = chart_df.index
-        st.bar_chart(chart_df, x="Pclass", y=["Survived"])
+        st.bar_chart(chart_df, x="Pclass", y=["PassengerId"])
 
+        df = filtered_df[["Pclass"]]
+        df = df.reset_index()
+        st.subheader("Passengers by Passenger Class")
+        fig = px.pie(df, names='Pclass', values='PassengerId', title='Passengers by Passenger Class')
+        # Display the Pie Chart in Streamlit
+        st.plotly_chart(fig)
+        df = filtered_df[["Sex"]]
+        df = df.reset_index()
+        st.subheader("Passenger Gender Distribution")
+        fig = px.pie(df, names='Sex', values='PassengerId', title='Gender Distribution')
+        st.plotly_chart(fig)
