@@ -29,10 +29,10 @@ export const menuItems = [
 ]
 
 export const reviews = [
-  { name: "Maria", rating: "5/5", comment: "Excellent food and great service", imgUrl: ""},
-  { name: "Karla", rating: "5/5", comment: "Excellent food and great service", imgUrl: ""},
-  { name: "Jack", rating: "5/5", comment: "Excellent food and great service", imgUrl: ""},
-  { name: "Steve", rating: "5/5", comment: "Excellent food and great service", imgUrl: ""}
+  { name: "Maria", rating: 5, comment: "Excellent food and great service", imgUrl: "/images/maria.jpg"},
+  { name: "Karla", rating: 4.5, comment: "Awesome experience", imgUrl: "/images/karla.jpg"},
+  { name: "Jack", rating: 4, comment: "Tasty food, nice atmosphere", imgUrl: "/images/jack.jpg"},
+  { name: "Steve", rating: 5, comment: "The best bruchetta in town!", imgUrl: "/images/steve.jpg"}
 ]
 
 export const specials = [
