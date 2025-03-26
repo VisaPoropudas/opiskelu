@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom"
 import { menuItems } from '../index';
 
+
 export default function Nav() {
+
     return (
-        <nav>
+
+        <nav id="nav">
             {
             menuItems.map((item, index) => {
                 return (
