@@ -7,12 +7,12 @@ export default function Specials() {
     return (
         <div className="specials">
             <div style={{ display: "flex", flexDirection: "column"}}>
-                <div className="row" style={{display:"flex", flexDirection: "row", alignItems: "center", width: "100%"}}>
-                    <div  style={{justifySelf: "flex-start", width: "50%", flex: 1, textAlign: "left", paddingLeft : 50 }}>
+                <div className="row" style={{display:"flex", flexDirection: "row", alignItems: "flex-start", width: "100%"}}>
+                    <div  style={{alignContent: "center", width: "50%", flex: 1, textAlign: "left", paddingLeft : 50 }}>
                     <h2 className="section-title">Specials</h2>
                     </div>
                     <div style={{ width: "50%", flex : 1, textAlign: "right", paddingRight : 50}}>
-                        <button><Link to="menu">Menu</Link></button>
+                        <button style={{margin: 0}}><Link to="menu">Menu</Link></button>
                     </div>
                 </div>
                 <div className="row offers-container">

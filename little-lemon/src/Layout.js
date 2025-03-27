@@ -1,4 +1,5 @@
 
+import Alert from "./components/Alert";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Main from "./components/Main";
@@ -16,6 +17,7 @@ export default function Layout(props) {
             <Main>
                 { children }
             </Main>
+            <Alert/>
             <Footer/>
         </div>
 

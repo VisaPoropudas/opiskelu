@@ -1,6 +1,23 @@
 import {createContext, useContext, useState} from "react";
 
-const AlertContext = createContext(undefined);
+const AlertContext = createContext();
+
+export const AlertProvider = ({ children }) => {
+  const [alert, setAlert] = useState(null);
+
+  const showAlert = (message, type) => {
+    setAlert({ message, type });
+    //setTimeout(() => setAlert(null), 3000); // Piilota alert automaattisesti
+  };
+
+  return (
+    <AlertContext.Provider value={{ alert, showAlert }}>
+      {children}
+    </AlertContext.Provider>
+  );
+};
+/*
+export default AlertContext;
 
 export const AlertProvider = ({ children }) => {
   const [state, setState] = useState({
@@ -22,6 +39,6 @@ export const AlertProvider = ({ children }) => {
       {children}
     </AlertContext.Provider>
   );
-};
+};*/
 
 export const useAlertContext = () => useContext(AlertContext);

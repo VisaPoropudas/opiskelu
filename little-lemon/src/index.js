@@ -13,7 +13,7 @@ root.render(
     <BrowserRouter>
         <AlertProvider>
             <App />
-          </AlertProvider>
+        </AlertProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
