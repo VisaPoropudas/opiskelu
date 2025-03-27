@@ -5,7 +5,7 @@ import { useAlertContext } from "../context/alertContext";
 import Layout from "../Layout";
  import NameBanner from "./NameBanner";
 import { FormControl, FormErrorMessage } from "@chakra-ui/form-control";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 
 export default function BookingPage() {

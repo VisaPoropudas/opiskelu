@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import Modal from "./Modal";
 import logo from '../assets/logo-small.jpg'
 

@@ -3,9 +3,8 @@ import { useFormik } from "formik";
 import * as Yup from 'yup';
 import {useAlertContext} from '../context/alertContext';
 import Layout from "../Layout";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router";
 import NameBanner from "./NameBanner";
-import Homepage from "./Homepage";
 import { FormControl, FormErrorMessage } from "@chakra-ui/form-control";
 
 export default function Login() {

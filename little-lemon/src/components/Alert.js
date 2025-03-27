@@ -15,9 +15,9 @@ function Alert() {
     isOpen && (
         <Modal handleCloseModal={onClose}>
             <img src={logo} alt="Little Lemon" width={200}/>
-            <div>
-             {message}
-            </div>
+            <p>
+              {message}
+            </p>
             <button onClick={onClose}>OK</button>
           </Modal>
         )

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router"
 import headerImage from "../assets/special-small-rect.jpg"
 
 export default function CallToAction() {

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import logo from "../assets/logo-small.jpg"
 export default function Header(props) {
     const { children } = props;

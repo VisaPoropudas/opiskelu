@@ -3,11 +3,23 @@ import App from './App';
 import Login from './components/Login';
 import BookingPage from './components/BookingPage';
 
-/*test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});*/
+//import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router';
+
+
+test('renders App without crashing', () => {
+  const { getByText } = render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  );
+
+  // Replace with a real element or text that App renders
+  expect(getByText(/homepage/i)).toBeInTheDocument();
+});
+
+
+
 
 describe("Login Form", () => {
   test("User is able to submit the login form", () => {
