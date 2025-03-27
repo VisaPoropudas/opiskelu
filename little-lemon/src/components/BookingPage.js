@@ -10,11 +10,9 @@ import { useNavigate } from "react-router-dom";
 
 export default function BookingPage() {
 
-    //const {isLoading, response, submit} = useSubmit();
     const { onOpen } = useAlertContext();
     const navigate = useNavigate();
-    const currentDate = new Date().toISOString().slice(0, 10); //.toLocaleDateString();
-    //const formattedDate = currentDate.toISOString().slice(0, 10);
+    const currentDate = new Date().toISOString().slice(0, 10);
     const [data, setData] = useState([]);
 
     var module = null;
@@ -233,7 +231,7 @@ export default function BookingPage() {
             </div>
         </Layout>
         </>
-        )
+    )
 
             {/**
             Date
@@ -259,4 +257,4 @@ export default function BookingPage() {
 
             **/}
 
-            }
+}

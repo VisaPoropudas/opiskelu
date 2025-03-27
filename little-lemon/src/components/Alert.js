@@ -1,14 +1,8 @@
-/*import {
-  AlertDialog,
-  AlertDialogBody,
-  AlertDialogContent,
-  AlertDialogHeader,
-  AlertDialogOverlay,
-} from "@chakra-ui/react";*/
-import Modal from 'react-modal'
+
+import Modal from './Modal'
 import { useAlertContext } from "../context/alertContext";
 import { useRef } from "react";
-
+import logo from '../assets/logo-small.jpg'
 /**
  * This is a global component that uses context to display a global alert message.
  */
@@ -19,9 +13,13 @@ function Alert() {
 
   return (
     isOpen && (
-          <div className={`alert alert-${alert.type}`}>
-            {alert.message}
-          </div>
+        <Modal handleCloseModal={onClose}>
+            <img src={logo} alt="Little Lemon" width={200}/>
+            <div>
+             {message}
+            </div>
+            <button onClick={onClose}>OK</button>
+          </Modal>
         )
       );
   }

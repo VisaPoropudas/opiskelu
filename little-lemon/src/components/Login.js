@@ -2,12 +2,8 @@ import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
 import {useAlertContext} from '../context/alertContext';
-import useSubmit from '../hooks/useSubmit'
 import Layout from "../Layout";
 import { Link, useNavigate } from "react-router-dom";
-import { isValidEmail } from "..";
-import ConfirmedBooking from "./ConfirmedBooking";
-import Modal from "./Modal";
 import NameBanner from "./NameBanner";
 import Homepage from "./Homepage";
 import { FormControl, FormErrorMessage } from "@chakra-ui/form-control";
@@ -26,7 +22,7 @@ export default function Login() {
         },
         onSubmit: async (values, { setSubmitting }) => {
           try {
-            onOpen("success", "You logged in succesfully!")
+            onOpen("success", "Login succesful!")
             navigate("/");
             } catch (error) {
                 console.error(error);
@@ -46,14 +42,6 @@ export default function Login() {
       });
 
 
-
-    function handleSubmit() {
-        console.log("Logged in")
-        /** Go to homepage */
-        return (
-            <Homepage/>
-        )
-    }
     return (
         <>
         <Layout>
